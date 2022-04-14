@@ -1,10 +1,7 @@
 import React, {useEffect} from 'react';
-import {Provider} from 'react-redux';
-
-import store from './redux/store';
-import AppRouter from './router';
 
 import './App.css';
+import FishEye from 'src/pages/fisheye';
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -19,11 +16,7 @@ const App: React.FC = () => {
     };
   }, []);
 
-  return (
-    <Provider store={store}>
-      <AppRouter />
-    </Provider>
-  );
+  return <FishEye />;
 };
 
 export default App;
