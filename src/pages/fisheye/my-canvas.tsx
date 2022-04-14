@@ -1,6 +1,11 @@
 import React, {useEffect, useRef} from 'react';
 import topView from 'src/assets/top-view.png';
-import {getInvertedImageData} from './utils';
+import frontView from 'src/assets/front-view.png';
+import {
+  getInvertedImageData,
+  getConvertedTopViewImageData,
+  getConvertedFrontViewImageData,
+} from './utils';
 
 const MyCanvas: React.FC = () => {
   const canvasRef1 = useRef<HTMLCanvasElement>(null);
@@ -34,7 +39,9 @@ const MyCanvas: React.FC = () => {
       console.log('no sourceImageData');
       return;
     }
-    const destImageData = getInvertedImageData(sourceImageData);
+    // const destImageData = getInvertedImageData(sourceImageData);
+    const destImageData = getConvertedTopViewImageData(sourceImageData);
+    // const destImageData = getConvertedFrontViewImageData(sourceImageData, 7);
     const canvas2: HTMLCanvasElement = canvasRef2.current;
     const context2: CanvasRenderingContext2D | null = canvas2?.getContext('2d');
     canvas2.width = destImageData.width;
@@ -46,6 +53,7 @@ const MyCanvas: React.FC = () => {
     <div
       style={{
         display: 'flex',
+        flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
       }}
